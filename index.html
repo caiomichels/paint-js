@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>PaintJS</title>
+		<link
+			rel="stylesheet"
+			href="./style.css"
+		/>
+		<link
+			rel="shortcut icon"
+			href="#"
+			type="image/x-icon"
+		/>
+	</head>
+	<body>
+		<header>
+			<div class="logo">PaintJS</div>
+			<div class="tools">
+				<button onclick="setTool(brush)">
+					<img
+						src="./assets/icons/brush.svg"
+						alt="Brush"
+					/>
+				</button>
+				<button onclick="setTool(eraser)">
+					<img
+						src="./assets/icons/eraser.svg"
+						alt="Eraser"
+					/>
+				</button>
+				<button onclick="setTool(airbrush)">
+					<img
+						src="./assets/icons/airbrush.svg"
+						alt="Air Brush"
+					/>
+				</button>
+				<button onclick="setTool(colorPicker)">
+					<img
+						src="./assets/icons/color-picker.svg"
+						alt="Color Picker"
+					/>
+				</button>
+				<button onclick="clearAll()">
+					<img
+						src="./assets/icons/sheet.svg"
+						alt="Clear All"
+					/>
+				</button>
+				<button onclick="setTool(square)">
+					<img
+						src="./assets/icons/square.svg"
+						alt="Square"
+					/>
+				</button>
+				<button onclick="setTool(triangle)">
+					<img
+						src="./assets/icons/triangle.svg"
+						alt="Triangle"
+					/>
+				</button>
+				<button onclick="setTool(circle)">
+					<img
+						src="./assets/icons/circle.svg"
+						alt="Circle"
+					/>
+				</button>
+				<button onclick="setTool(line)">
+					<img
+						src="./assets/icons/line.svg"
+						alt="Line"
+					/>
+				</button>
+				<button onclick="setTool(polygon)">
+					<img
+						src="./assets/icons/polygon.svg"
+						alt="Polygon"
+					/>
+				</button>
+			</div>
+			<div class="style">
+				<label>
+					Stroke:
+					<select
+						class="stroke"
+						onchange="setStroke()"
+					>
+						<option value="true">Yes</option>
+						<option value="false">No</option>
+					</select>
+				</label>
+				<label>
+					Fill:
+					<select
+						class="fill"
+						onchange="setFill()"
+					>
+						<option value="true">Yes</option>
+						<option value="false">No</option>
+					</select>
+				</label>
+			</div>
+			<select
+				class="width"
+				onchange="setWidth()"
+			>
+				<option value="2">▁▁▁▁▁▁</option>
+				<option value="4">▂▂▂▂▂▂</option>
+				<option value="8">▃▃▃▃▃▃</option>
+				<option value="14">▄▄▄▄▄▄</option>
+				<option value="20">▅▅▅▅▅▅</option>
+				<option value="28">▆▆▆▆▆▆</option>
+			</select>
+			<div class="colors">
+				<div class="current">
+					<input
+						type="color"
+						class="active first"
+						value="#000000"
+					/>
+					<input
+						type="color"
+						class="second"
+						value="#ffffff"
+					/>
+					<button
+						class="change"
+						onclick="switchColorPos()"
+					>
+						<img
+							src="./assets/icons/change.svg"
+							alt="switch colors"
+						/>
+					</button>
+				</div>
+				<div class="preset-list">
+					<button
+						style="background: #ff0000"
+						onclick="setColor('#ff0000')"
+					></button>
+					<button
+						style="background: #0000ff"
+						onclick="setColor('#0000ff')"
+					></button>
+					<button
+						style="background: #008000"
+						onclick="setColor('#008000')"
+					></button>
+					<button
+						style="background: #ffff00"
+						onclick="setColor('#ffff00')"
+					></button>
+					<button
+						style="background: #ffa500"
+						onclick="setColor('#ffa500')"
+					></button>
+					<button
+						style="background: #ffc0cb"
+						onclick="setColor('#ffc0cb')"
+					></button>
+					<button
+						style="background: #000000"
+						onclick="setColor('#000000')"
+					></button>
+					<button
+						style="background: #808080"
+						onclick="setColor('#808080')"
+					></button>
+					<button
+						style="background: #dcdcdc"
+						onclick="setColor('#dcdcdc')"
+					></button>
+					<button
+						style="background: #ffffff"
+						onclick="setColor('#ffffff')"
+					></button>
+				</div>
+			</div>
+		</header>
+		<canvas></canvas>
+		<script src="./main.js"></script>
+	</body>
+</html>
