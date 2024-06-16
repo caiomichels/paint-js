@@ -10,7 +10,7 @@ const selectStroke = document.querySelector('.style .stroke');
 const selectWidth = document.querySelector('select.width');
 
 canvas.width = innerWidth;
-canvas.height = innerHeight - 70;
+canvas.height = innerHeight;
 ctx.lineCap = 'round';
 ctx.lineJoin = 'round';
 ctx.lineWidth = 1;
@@ -21,13 +21,12 @@ const airbrushWaitTime = 25;
 let snapshot;
 let polygonSnapshot;
 let points = [];
-let clicked = false;
+let canEndPolygon = true;
 let lastPos = { x: 0, y: 0 };
 let isDrawing = false;
 let stroke;
 let fill;
 let pressed = false;
-
 let airbrushLoop;
 
 const startDraw = (x, y) => {
@@ -81,6 +80,7 @@ const endDraw = (x, y) => {
             points.push({ x, y });
         }
         lastPos = { x, y };
+        setTimeout(() => (canEndPolygon = true), 500);
     }
     ctx.closePath();
     pressed = false;
@@ -300,10 +300,15 @@ canvas.addEventListener('mousedown', (e) => {
         }
     }
 
-    startDraw(e.offsetX, e.offsetY);
-
-    if (useTool === polygon && e.button === 2) {
-        endPolygon();
+    if (useTool === polygon) {
+        if (e.button === 2 && canEndPolygon) {
+            endPolygon();
+        } else if (e.button === 0) {
+            canEndPolygon = false;
+            startDraw(e.offsetX, e.offsetY);
+        }
+    } else {
+        startDraw(e.offsetX, e.offsetY);
     }
 
     fillBackground();
