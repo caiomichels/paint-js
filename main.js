@@ -305,21 +305,21 @@ canvas.addEventListener('mousedown', (e) => {
             endPolygon();
         } else if (e.button === 0) {
             canEndPolygon = false;
-            startDraw(e.offsetX, e.offsetY);
+            startDraw(e.clientX, e.clientY);
         }
     } else {
-        startDraw(e.offsetX, e.offsetY);
+        startDraw(e.clientX, e.clientY);
     }
 
     fillBackground();
 });
 
 window.addEventListener('mouseup', (e) => {
-    endDraw(e.offsetX, e.offsetY);
+    endDraw(e.clientX, e.clientY);
 });
 
 window.addEventListener('mousemove', (e) => {
-    useTool(e.offsetX, e.offsetY);
+    useTool(e.clientX, e.clientY);
     fillBackground();
 });
 
